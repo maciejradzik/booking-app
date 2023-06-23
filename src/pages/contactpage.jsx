@@ -3,10 +3,9 @@ import Navbar from "../components/navbar.jsx";
 
 const Contactpage = () =>{
     return (
-        <>
-            <Navbar/>
+        <div style={{height:"100vh"}}>
             <h1>Contact</h1>
-        </>
+        </div>
         )
 }
 

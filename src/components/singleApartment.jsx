@@ -3,10 +3,34 @@ import FullscreenIcon from '@mui/icons-material/Fullscreen';
 import HotelIcon from '@mui/icons-material/Hotel';
 import PersonIcon from '@mui/icons-material/Person';
 import CheckIcon from '@mui/icons-material/Check';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import {useState} from "react";
+import dayjs from "dayjs";
 
 
 
-const SingleApartment = ({name, nog, price, photo, size, beds, utilities}) => {
+const SingleApartment = ({name, nog, price, photo, size, beds, utilities, checkin, checkout, guests}) => {
+
+    const [open, setOpen] = useState(false);
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
+
+    const data1 = dayjs(checkin).format("DD/MM/YYYY")
+    const data2 = dayjs(checkout).format("DD/MM/YYYY")
+
     return (
         <>
                 <div style={{width:"1040px", height:"220px",borderRadius:"10px", backgroundColor:"white", margin:"10px", display:"flex"}}>
@@ -34,7 +58,40 @@ const SingleApartment = ({name, nog, price, photo, size, beds, utilities}) => {
                             </div>
                         </div>
                         <div className={"card-right"} style={{display:"flex", alignItems: 'center', justifyContent:"center"}}>
-                            <button>Ask for the price</button>
+                            <div>
+                                <Button variant="outlined" onClick={handleClickOpen}>
+                                    Ask about price
+                                </Button>
+                                <Dialog open={open} onClose={handleClose}>
+                                    <DialogTitle>{name} query details</DialogTitle>
+                                    <DialogContent>
+                                        <DialogContentText>
+                                            <p>You want to make querry for {name}</p>
+                                            <p>Check in: {data1}</p>
+                                            <p>Check out: {data2}</p>
+                                            <p>Total number of guests: {guests}</p>
+                                            <p>Price per night: {price} PLN </p>
+                                            <p>Total price: {(price)*2} PLN</p>
+                                            {/*<p>{dayjs(checkin).format("DD/MM/YYYY").diff(dayjs(checkout).format("DD/MM/YYYY"))}</p>*/}
+                                        </DialogContentText>
+                                        <TextField id="standard-basic" label="Name" variant="standard" style={{marginRight:"20px"}}/>
+                                        <TextField id="standard-basic" label="Surname" variant="standard" />
+                                        <TextField
+                                            autoFocus
+                                            margin="dense"
+                                            id="name"
+                                            label="Email Address"
+                                            type="email"
+                                            fullWidth
+                                            variant="standard"
+                                        />
+                                    </DialogContent>
+                                    <DialogActions>
+                                        <Button onClick={handleClose}>Cancel</Button>
+                                        <Button onClick={handleClose}>Ask!</Button>
+                                    </DialogActions>
+                                </Dialog>
+                            </div>
                         </div>
                     </div>
                 </div>

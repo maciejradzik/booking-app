@@ -1,16 +1,13 @@
 
 import '../App.css'
-import Header from "../components/header.jsx";
-import Navbar from "../components/navbar";
+import Header from "../components/header.jsx";;
 
 function MainPage() {
 
     return (
-        <>
-            {/*<div className={"mainPageStyle"}>*/}
+        <div className={"mainPageStyle"}>
                 <Header></Header>
-            {/*</div>*/}
-        </>
+        </div>
     )
 }
 

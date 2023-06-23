@@ -5,12 +5,13 @@ import SingleApartment from "../components/singleApartment.jsx";
 import {mergeDateAndTime} from "@mui/x-date-pickers/internals/utils/date-utils.js";
 
 
-const Apartmentspage = () =>{
+
+const SearchApartmentsPage = () =>{
 
     const [apartmentsData, setApartmentsData] = useState([])
     const [searchParams] = useSearchParams();
     const params = Object.fromEntries([...searchParams]);
-    console.log(params)
+    // console.log(params)
 
 
     const getApartmentsSearch = (successCallback) => {
@@ -30,24 +31,36 @@ const Apartmentspage = () =>{
         });
     },[])
 
-    console.log(apartmentsData)
+    const numberToFilter = params.guests
+
+    const apartmentsFilteredData = apartmentsData.filter((guestsNumber)=>{
+        return guestsNumber.NOG >= numberToFilter
+    })
+
+
+    console.log(apartmentsFilteredData)
+
+
 
     return (
         <>
             {/*// opcjonalnie //*/}
-            {/*<Header></Header>*/}
             <div>
+                {/*<h1>strona z apkami</h1>*/}
+                <h2>{params.checkin}</h2>
+                <h2>{params.checkout}</h2>
+                {/*<h2>{params.guests}</h2>*/}
                 <div style={{display:"flex", flexWrap:"wrap", flexDirection:"column", width:"100%", justifyContent:"center", alignItems:"center"}}>
                     {
-                        apartmentsData.map((el) =>{
-                           return <SingleApartment key={el.id} name={el.name} nog={el.NOG} price={el.price} photo={el.photo} size={el.size} beds={el.beds} utilities={el.utilities}></SingleApartment>
+                        apartmentsFilteredData.map((el) =>{
+                            return <SingleApartment key={el.id} guests={params.guests} checkin={params.checkin} checkout={params.checkout} name={el.name} nog={el.NOG} price={el.price} photo={el.photo} size={el.size} beds={el.beds} utilities={el.utilities}/>
                         })
                     }
                 </div>
             </div>
         </>
-        )
+    )
 
 }
 
-export default Apartmentspage
+export default SearchApartmentsPage

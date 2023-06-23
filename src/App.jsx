@@ -16,6 +16,7 @@ import {
 import MainPage from "./pages/mainpage.jsx";
 import AboutUs from "./pages/aboutus";
 import Navbar from "./components/navbar";
+import SearchApartmentsPage from "./pages/searchApartmentsPage.jsx";
 
 function App() {
     return (
@@ -28,6 +29,7 @@ function App() {
                         <Route path='contact' element={<Contactpage></Contactpage>} />
                         <Route path='apartments' element={<Apartmentspage />} />
                         <Route path='aboutus' element={<AboutUs />} />
+                        <Route path='search' element={<SearchApartmentsPage/>} />
                     </Routes>
                 </HashRouter>
             </LocalizationProvider>

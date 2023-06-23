@@ -4,10 +4,10 @@ import React from "react";
 import dayjs from "dayjs";
 import {DatePicker} from "@mui/x-date-pickers";
 import {MenuItem, TextField} from "@mui/material";
-import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
 import Button from '@mui/material/Button';
 import SearchIcon from '@mui/icons-material/Search';
 import {Link} from 'react-router-dom';
+import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
 
 const maxPerson = 10;
 
@@ -52,7 +52,7 @@ function Header() {
                     </TextField>
                 </div>
                 <div className={"headerBottom"} style={{display:"flex", justifyContent:"center"}}>
-                    <Button component={Link} to={`/apartments?checkin=${checkin.toString()}&checkout=${checkout.toString()}&guests=${guests}`} onClick={SearchFunction} style={{width:"170px", height:"50px"}} startIcon={<SearchIcon/>} variant="outlined">Find Your stay</Button>
+                    <Button component={Link} to={`/search?checkin=${checkin.toString()}&checkout=${checkout.toString()}&guests=${guests}`} onClick={SearchFunction} style={{width:"170px", height:"50px"}} startIcon={<SearchIcon/>} variant="outlined">Find Your stay</Button>
                 </div>
             </div>
         </div>
