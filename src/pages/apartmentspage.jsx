@@ -40,7 +40,7 @@ const Apartmentspage = () =>{
                 <div style={{display:"flex", flexWrap:"wrap", flexDirection:"column", width:"100%", justifyContent:"center", alignItems:"center"}}>
                     {
                         apartmentsData.map((el) =>{
-                           return <SingleApartment key={el.id} name={el.name} nog={el.NOG} price={el.price} photo={el.photo} size={el.size} beds={el.beds} utilities={el.utilities}></SingleApartment>
+                           return <SingleApartment key={el.id} buttonType={"details"} name={el.name} nog={el.NOG} price={el.price} photo={el.photo} size={el.size} beds={el.beds} utilities={el.utilities}></SingleApartment>
                         })
                     }
                 </div>

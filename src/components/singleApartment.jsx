@@ -16,7 +16,7 @@ import diff from "dayjs"
 import {useForm} from "react-hook-form";
 
 
-const SingleApartment = ({name, nog, price, photo, size, beds, utilities, checkin, checkout, guests}) => {
+const SingleApartment = ({name, nog, price, photo, size, beds, utilities, checkin, checkout, guests, buttonType}) => {
 
     const [open, setOpen] = useState(false);
 
@@ -28,11 +28,39 @@ const SingleApartment = ({name, nog, price, photo, size, beds, utilities, checki
         setOpen(false);
     };
 
+    const StayLenght = () => {
+        if (checkin && checkout) {
+            let parts1 = (checkin).split('/');
+            let mydate1 = new Date(parts1[2], parts1[1] - 1, parts1[0]);
+            console.log(mydate1.toDateString());
 
-    const data1 = dayjs(checkin)
-    const data2 = dayjs(checkout)
+            let parts2 = (checkout).split('/');
+            let mydate2 = new Date(parts2[2], parts2[1] - 1, parts2[0]);
+            console.log(mydate2.toDateString());
 
-    const dataDifference  = data2.diff(data1, 'day')
+            let difference = mydate2 - mydate1
+            console.log(difference)
+
+            let difftodays = difference / 86400000
+            console.log(difftodays)
+            return difftodays
+        }
+    }
+
+    // const parts1 =(checkin).split('/');
+    // const mydate1 = new Date(parts1[2], parts1[1] - 1, parts1[0]);
+    // console.log(mydate1.toDateString());
+    //
+    // const parts2 =(checkout).split('/');
+    // const mydate2 = new Date(parts2[2], parts2[1] - 1, parts2[0]);
+    // console.log(mydate2.toDateString());
+    //
+    // const difference = mydate2 - mydate1
+    // console.log(difference)
+    //
+    // const difftodays = difference / 86400000
+    // console.log(difftodays)
+
 
     const {
         register,
@@ -47,6 +75,15 @@ const SingleApartment = ({name, nog, price, photo, size, beds, utilities, checki
             setOpen(false);
         }
 
+    }
+
+    const OptionalButton = () =>{
+        if (buttonType === "asking"){
+            return <Button variant="outlined" onClick={handleClickOpen}>Ask about price</Button>
+        }
+        else if(buttonType === "details"){
+            return <Button variant="outlined">Show more details</Button>
+        }
     }
 
     return (
@@ -77,20 +114,18 @@ const SingleApartment = ({name, nog, price, photo, size, beds, utilities, checki
                         </div>
                         <div className={"card-right"} style={{display:"flex", alignItems: 'center', justifyContent:"center"}}>
                             <div>
-                                <Button variant="outlined" onClick={handleClickOpen}>
-                                    Ask about price
-                                </Button>
+                                <OptionalButton/>
                                 <Dialog open={open} onClose={handleClose}>
                                     <DialogTitle>{name} query details</DialogTitle>
                                     <DialogContent>
                                         <div>
                                             <p>You want to make querry for {name}</p>
-                                            <p>Check in: {data1.format("DD/MM/YYYY")}</p>
-                                            <p>Check out: {data2.format("DD/MM/YYYY")}</p>
-                                            <p>Total number of night: {dataDifference}</p>
+                                            <p>Check in: {checkin}</p>
+                                            <p>Check out: {checkout}</p>
+                                            <p>Total number of night: {StayLenght()}</p>
                                             <p>Total number of guests: {guests}</p>
                                             <p>Price per night: {price} PLN </p>
-                                            <p>Total price: {price*dataDifference} PLN</p>
+                                            <p>Total price: {price*StayLenght()} PLN</p>
                                         </div>
                                         <form onSubmit={handleSubmit(onSubmit)}>
                                             <TextField

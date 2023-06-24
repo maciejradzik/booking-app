@@ -53,7 +53,7 @@ const SearchApartmentsPage = () =>{
                 <div style={{display:"flex", flexWrap:"wrap", flexDirection:"column", width:"100%", justifyContent:"center", alignItems:"center"}}>
                     {
                         apartmentsFilteredData.map((el) =>{
-                            return <SingleApartment key={el.id} guests={params.guests} checkin={params.checkin} checkout={params.checkout} name={el.name} nog={el.NOG} price={el.price} photo={el.photo} size={el.size} beds={el.beds} utilities={el.utilities}/>
+                            return <SingleApartment key={el.id} buttonType={"asking"} guests={params.guests} checkin={params.checkin} checkout={params.checkout} name={el.name} nog={el.NOG} price={el.price} photo={el.photo} size={el.size} beds={el.beds} utilities={el.utilities}/>
                         })
                     }
                 </div>

@@ -103,7 +103,7 @@ function Header() {
         console.log(checkinDate, checkoutDate, guests)
         navigate({
             pathname: '/search',
-            search: `?${createSearchParams({checkin: checkinDate.toISOString(), checkout: checkoutDate.toISOString(), guests: guests})}`
+            search: `?${createSearchParams({checkin: checkinDate.format("DD/MM/YYYY"), checkout: checkoutDate.format("DD/MM/YYYY"), guests: guests})}`
         });
     }
 
@@ -111,7 +111,7 @@ function Header() {
         <LocalizationProvider dateAdapter={AdapterDayjs}>
             <div className={"headerBox"} style={{width:"100%", height:"80%", display:"flex", justifyContent:"center", alignItems:"center"}}>
                 <div className={"header"} style={{width:"800px", height:"300px", backgroundColor:"rgba(255, 255, 255, 0.9)", borderRadius:"15px", display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"flex-start"}}>
-                    <h2>Welcome to PJ Apartments {checkinDate.format('DD/MM')}, {minCheckoutDate.format('DD/MM')}, {checkoutDate.format('DD/MM')}</h2>
+                    <h1>Welcome to PJ Apartments </h1>
                     <div className={"headerTop"} style={{display:"flex", justifyContent:"space-around", width:"750px"}}>
                         <DatePicker onChange={(checkinValue) => CheckinDateHandler(checkinValue)} label="Check in" className={"datePick"} value={checkinDate} minDate={today} disablePast={true}/>
                         <DatePicker onChange={(checkoutValue) => CheckoutDateHandler(checkoutValue)} label="Check out" value={checkoutDate} minDate={minCheckoutDate} disablePast={true}/>
