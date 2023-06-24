@@ -12,7 +12,8 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import {useState} from "react";
 import dayjs from "dayjs";
-
+import diff from "dayjs"
+import {useForm} from "react-hook-form";
 
 
 const SingleApartment = ({name, nog, price, photo, size, beds, utilities, checkin, checkout, guests}) => {
@@ -28,8 +29,25 @@ const SingleApartment = ({name, nog, price, photo, size, beds, utilities, checki
     };
 
 
-    const data1 = dayjs(checkin).format("DD/MM/YYYY")
-    const data2 = dayjs(checkout).format("DD/MM/YYYY")
+    const data1 = dayjs(checkin)
+    const data2 = dayjs(checkout)
+
+    const dataDifference  = data2.diff(data1, 'day')
+
+    const {
+        register,
+        handleSubmit,
+        watch,
+        formState: { errors },
+    } = useForm()
+
+    const onSubmit = (data) => {
+        console.log(data)
+        if (data.Name.length > 1 && data.Surname.length > 1 && data.Email.length > 1) {
+            setOpen(false);
+        }
+
+    }
 
     return (
         <>
@@ -65,31 +83,57 @@ const SingleApartment = ({name, nog, price, photo, size, beds, utilities, checki
                                 <Dialog open={open} onClose={handleClose}>
                                     <DialogTitle>{name} query details</DialogTitle>
                                     <DialogContent>
-                                        <DialogContentText>
+                                        <div>
                                             <p>You want to make querry for {name}</p>
-                                            <p>Check in: {data1}</p>
-                                            <p>Check out: {data2}</p>
+                                            <p>Check in: {data1.format("DD/MM/YYYY")}</p>
+                                            <p>Check out: {data2.format("DD/MM/YYYY")}</p>
+                                            <p>Total number of night: {dataDifference}</p>
                                             <p>Total number of guests: {guests}</p>
                                             <p>Price per night: {price} PLN </p>
-                                            <p>Total price: {(price)*2} PLN</p>
-                                            {/*<p>{dayjs(checkin).format("DD/MM/YYYY").diff(dayjs(checkout).format("DD/MM/YYYY"))}</p>*/}
-                                        </DialogContentText>
-                                        <TextField id="standard-basic" label="Name" variant="standard" style={{marginRight:"20px"}}/>
-                                        <TextField id="standard-basic" label="Surname" variant="standard" />
-                                        <TextField
-                                            autoFocus
-                                            margin="dense"
-                                            id="name"
-                                            label="Email Address"
-                                            type="email"
-                                            fullWidth
-                                            variant="standard"
-                                        />
+                                            <p>Total price: {price*dataDifference} PLN</p>
+                                        </div>
+                                        <form onSubmit={handleSubmit(onSubmit)}>
+                                            <TextField
+                                                id="standard-basic"
+                                                label="Name"
+                                                name="Name"
+                                                variant="standard"
+                                                style={{marginRight:"20px"}}
+                                                {...register("Name", {required: "Name is required"})}
+                                                error={Boolean(errors.Name)}
+                                                helperText={errors.Name?.message}
+                                            />
+
+                                            <TextField
+                                                id="standard-basic"
+                                                label="Surname"
+                                                variant="standard"
+                                                name="Surname"
+                                                {...register("Surname", {required: "Surname is required"})}
+                                                error={Boolean(errors.Surname)}
+                                                helperText={errors.Surname?.message}
+                                            />
+                                            <TextField
+                                                autoFocus
+                                                margin="dense"
+                                                id="email"
+                                                label="Email Address"
+                                                type="email"
+                                                fullWidth
+                                                variant="standard"
+                                                name="Email"
+                                                {...register("Email", {required: "E-mail is required"})}
+                                                error={Boolean(errors.Email)}
+                                                helperText={errors.Email?.message}
+
+                                            />
+                                            <DialogActions>
+                                                <Button onClick={handleClose}>Cancel</Button>
+                                                <Button type={"submit"} onClick={onSubmit}>Ask!</Button>
+                                            </DialogActions>
+                                        </form>
                                     </DialogContent>
-                                    <DialogActions>
-                                        <Button onClick={handleClose}>Cancel</Button>
-                                        <Button onClick={handleClose}>Ask!</Button>
-                                    </DialogActions>
+
                                 </Dialog>
                             </div>
                         </div>
