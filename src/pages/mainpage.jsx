@@ -6,7 +6,7 @@ function MainPage() {
 
     return (
         <div className={"mainPageStyle"}>
-                <Header></Header>
+                <Header headerType={"mainHeader"}></Header>
         </div>
     )
 }

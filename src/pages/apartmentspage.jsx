@@ -38,6 +38,9 @@ const Apartmentspage = () =>{
             {/*<Header></Header>*/}
             <div>
                 <div style={{display:"flex", flexWrap:"wrap", flexDirection:"column", width:"100%", justifyContent:"center", alignItems:"center"}}>
+                    <div className={"apartmentsPageImage"} style={{marginBottom:"50px"}}>
+                        <p style={{color: "white", fontSize:"70px", marginRight:"40px"}}>OUR APARTMENTS</p>
+                    </div>
                     {
                         apartmentsData.map((el) =>{
                            return <SingleApartment key={el.id} buttonType={"details"} name={el.name} nog={el.NOG} price={el.price} photo={el.photo} size={el.size} beds={el.beds} utilities={el.utilities}></SingleApartment>

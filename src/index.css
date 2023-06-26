@@ -2,6 +2,7 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
+  height: 100vh;
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
@@ -32,8 +33,13 @@ body {
 }
 
 h1 {
-  font-size: 3.2em;
+  font-size: 3em;
   line-height: 1.1;
+}
+
+h2 {
+  font-size: 2em;
+  color: rgb(64, 76, 97);
 }
 
 button {
@@ -48,11 +54,24 @@ button {
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: #ffffff;
 }
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+.navButton:hover{
+  border-bottom: 3px solid rgb(64, 76, 97);
+  outline: none;
+  border-radius: 0px;
+}
+
+.navButton:focus,
+.navButton:focus-visible {
+  border-bottom: 3px solid rgb(64, 76, 97);
+  outline: none;
+  border-radius: 0px;
 }
 
 @media (prefers-color-scheme: light) {
@@ -84,3 +103,62 @@ button:focus-visible {
 /*.css-i4bv87-MuiSvgIcon-root {*/
 /*  color: red;*/
 /*}*/
+
+
+.aboutImage {
+  background-image: url("../images/aboutus.jpg");
+  width:70%;
+  height:250px;
+  background-repeat: no-repeat;
+  /*background-position: center;*/
+  background-size: contain;
+  margin-left: 320px;
+}
+
+.apartmentsPageImage{
+  background-image: url("../images/grey.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display:flex;
+  width:100%;
+  height:400px;
+  justify-content:flex-end;
+  align-items:center;
+  background-position: center center;
+}
+
+.aboutUsImage{
+  background-image: url("../images/aboutus.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display:flex;
+  width:100%;
+  height:400px;
+  justify-content:flex-end;
+  align-items:center;
+  background-position: center center;
+}
+
+.contactImage{
+  background-image: url("../images/green (2).jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display:flex;
+  width:100%;
+  height:400px;
+  justify-content:flex-end;
+  align-items:center;
+  background-position: center 60%;
+}
+
+.searchImage{
+  background-image: url("../images/green (2).jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display:flex;
+  width:100%;
+  height:400px;
+  justify-content:center;
+  align-items:center;
+  background-position: center 60%;
+}

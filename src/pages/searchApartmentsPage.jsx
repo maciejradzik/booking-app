@@ -3,6 +3,7 @@ import '../App.css'
 import {useSearchParams} from "react-router-dom";
 import SingleApartment from "../components/singleApartment.jsx";
 import {mergeDateAndTime} from "@mui/x-date-pickers/internals/utils/date-utils.js";
+import Header from "../components/header.jsx";
 
 
 
@@ -44,12 +45,14 @@ const SearchApartmentsPage = () =>{
 
     return (
         <>
-            {/*// opcjonalnie //*/}
+            <div style={{display:"flex", flexWrap:"wrap", flexDirection:"column", width:"100%", justifyContent:"center", alignItems:"center"}}>
+                <div className={"searchImage"}>
+                    <div style={{margin:"30px"}}>
+                        <Header headerType={"secondaryHeader"}></Header>
+                    </div>
+                </div>
+            </div>
             <div>
-                {/*<h1>strona z apkami</h1>*/}
-                <h2>{params.checkin}</h2>
-                <h2>{params.checkout}</h2>
-                {/*<h2>{params.guests}</h2>*/}
                 <div style={{display:"flex", flexWrap:"wrap", flexDirection:"column", width:"100%", justifyContent:"center", alignItems:"center"}}>
                     {
                         apartmentsFilteredData.map((el) =>{
