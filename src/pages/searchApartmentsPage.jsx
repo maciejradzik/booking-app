@@ -38,21 +38,27 @@ const SearchApartmentsPage = () =>{
         return guestsNumber.NOG >= numberToFilter
     })
 
-
     console.log(apartmentsFilteredData)
+
+    const ApartmentWordChecker = () =>{
+        if (apartmentsFilteredData.length <= 1){
+            return `apartment`
+        } else {
+            return `apartments`
+        }
+    }
 
 
 
     return (
-        <>
+        <div style={{height:"100vh"}}>
             <div style={{display:"flex", flexWrap:"wrap", flexDirection:"column", width:"100%", justifyContent:"center", alignItems:"center"}}>
                 <div className={"searchImage"}>
-                    <div style={{margin:"30px"}}>
-                        <Header headerType={"secondaryHeader"}></Header>
-                    </div>
+                    <Header headerType={"secondaryHeader"}></Header>
                 </div>
             </div>
             <div>
+                <p style={{textAlign:"center", fontSize:"20px", marginTop:"50px", marginBottom:"50px"}}> From {params.checkin} to {params.checkout} we have {apartmentsFilteredData.length} available <ApartmentWordChecker/> </p>
                 <div style={{display:"flex", flexWrap:"wrap", flexDirection:"column", width:"100%", justifyContent:"center", alignItems:"center"}}>
                     {
                         apartmentsFilteredData.map((el) =>{
@@ -61,7 +67,7 @@ const SearchApartmentsPage = () =>{
                     }
                 </div>
             </div>
-        </>
+        </div>
     )
 
 }

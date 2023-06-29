@@ -45,29 +45,41 @@ function Header({headerType}) {
 
     const OptionalHeader = () =>{
         if (headerType === "mainHeader"){
-            return <p style={{color: "#404c61", fontSize:"50px", marginTop:"10px", marginBottom:"10px"}}>Welcome to PJ Apartments</p>
+            return (
+                <>
+                    <p style={{color: "white", fontSize:"40px", marginBottom:"-25px", marginRight:"40px"}}>Welcome to</p>
+                    <p style={{color: "white", fontSize:"70px", marginTop:"10px", marginBottom:"-25px", marginRight:"40px"}}>PJ APARTMENTS</p>
+                    <p style={{color: "white", fontSize:"20px", marginBottom:"30px", marginRight:"40px"}}>Visit the luxury apartments in Kraków</p>
+                </>
+            )
         }
         else if(headerType === "secondaryHeader") {
-            return <p/>
+            return <p style={{color: "white", fontSize:"70px", marginTop:"10px", marginBottom:"0px", marginRight:"40px"}}>PJ APARTMENTS</p>
         }
     }
 
 
     return (
         <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <div className={"headerBox"} style={{width:"100%", height:"80%", display:"flex", justifyContent:"center", alignItems:"center"}}>
-                <div className={"header"} style={{width:"800px", height:"50%", backgroundColor:"rgba(255, 255, 255, 0.9)", borderRadius:"15px", display:"flex",flexDirection:"column", alignItems:"center", justifyContent:"flex-start"}}>
-                    <OptionalHeader/>
-                    <div className={"headerTop"} style={{display:"flex", justifyContent:"space-around", width:"750px"}}>
-                        <DatePicker onChange={(checkinValue) => CheckinDateHandler(checkinValue)} label="Check in" className={"datePick"} value={checkinDate} minDate={today} disablePast={true}/>
-                        <DatePicker onChange={(checkoutValue) => CheckoutDateHandler(checkoutValue)} label="Check out" value={checkoutDate} minDate={minCheckoutDate} disablePast={true}/>
+            <div className={"headerBox"} style={{width:"100%", height:"80%", display:"flex", justifyContent:"center", alignItems:"flex-end", flexDirection:"column"}}>
+                <OptionalHeader/>
+                <div className={"header"} style={{marginRight:"40px",width:"800px",padding:"20px",borderRadius:"15px",backgroundColor:"rgba(249, 249, 249, 0.9)", display:"flex",flexDirection:"column", alignItems:"center", justifyContent:"flex-start"}}>
+                    <div className={"headerTop"} style={{display:"flex", justifyContent:"space-around", width:"100%", alignItems:"center" }}>
+                        <DatePicker sx={{input: {color:"rgba(0, 0, 0, 0.6)"}}} onChange={(checkinValue) => CheckinDateHandler(checkinValue)} className={"datePick"} label="Check in" value={checkinDate} minDate={today} disablePast={true}/>
+                        <DatePicker sx={{input: {color:"rgba(0, 0, 0, 0.6)"}}} onChange={(checkoutValue) => CheckoutDateHandler(checkoutValue)} label="Check out" value={checkoutDate} minDate={minCheckoutDate} disablePast={true}/>
                         <TextField
                             id="outlined-select-guests"
                             select
-                            label="Number of guests"
+                            label="Guests"
                             defaultValue="1"
-                            helperText="Please choose number of guests"
+                            // helperText="Please choose number of guests"
                             onChange={(e) => {setGuests(e.target.value)}}
+                            style={{width:"80px"}}
+                            InputProps={{
+                                    sx: {
+                                        color: "rgba(0, 0, 0, 0.6)"
+                                    },
+                                }}
                         >
                             {Array.from({length: maxPerson},(x,i) => (
                                 <MenuItem key={i+1} value={i+1}>
@@ -75,9 +87,7 @@ function Header({headerType}) {
                                 </MenuItem>
                             ))}
                         </TextField>
-                    </div>
-                    <div className={"headerBottom"} style={{display:"flex", justifyContent:"center"}}>
-                        <Button onClick={() => GoToSearchList()} style={{width:"170px", height:"50px", marginBottom:"20px"}} startIcon={<SearchIcon/>} variant="outlined">Find Your stay</Button>
+                        <Button onClick={() => GoToSearchList()} style={{width:"170px", height:"56px", border:"1 px solid red"}} startIcon={<SearchIcon/>} variant="outlined">Find Your stay</Button>
                     </div>
                 </div>
             </div>
