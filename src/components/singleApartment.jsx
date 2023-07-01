@@ -28,14 +28,17 @@ const SingleApartment = ({name, nog, price, photo, size, beds, utilities, checki
         setOpen(false);
     };
 
+    console.log(checkin)
+
     const StayLenght = () => {
         if (checkin && checkout) {
             let parts1 = (checkin).split('/');
-            let mydate1 = new Date(parts1[2], parts1[1] - 1, parts1[0]);
+            console.log(parts1)
+            let mydate1 = new Date(parts1[2], parts1[0], parts1[1] - 1);
             console.log(mydate1.toDateString());
 
             let parts2 = (checkout).split('/');
-            let mydate2 = new Date(parts2[2], parts2[1] - 1, parts2[0]);
+            let mydate2 = new Date(parts2[2], parts2[0],  parts2[1] - 1);
             console.log(mydate2.toDateString());
 
             let difference = mydate2 - mydate1
@@ -73,7 +76,7 @@ const SingleApartment = ({name, nog, price, photo, size, beds, utilities, checki
 
     return (
         <>
-                <div style={{ boxShadow:"0px 0px 10px #00000029", width:"1040px", height:"220px",borderRadius:"10px", backgroundColor:"white", margin:"10px", display:"flex"}}>
+                <div style={{ boxShadow:"0px 0px 10px #00000029", width:"1040px", height:"220px",borderRadius:"10px", backgroundColor:"white", margin:"10px", display:"flex", marginBottom:"40px"}}>
                     <img src={photo} style={{width: "320px", height: "220px", borderTopLeftRadius:"inherit", borderBottomLeftRadius:"inherit", marginRight:"10px"}}/>
                     {/*<div className={"card-left"} style={{width: "320px", height: "220px", backgroundColor:"red", borderTopLeftRadius:"inherit", borderBottomLeftRadius:"inherit", marginRight:"10px"}}></div>*/}
                     <div className={"card-content"} style={{display:"flex", justifyContent:"space-between", width:"100%", padding:"15px"}}>

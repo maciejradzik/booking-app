@@ -144,7 +144,7 @@ button:focus-visible {
 }
 
 .searchImage{
-  background-image: url("../images/green (2).jpg");
+  background-image: url("../images/olive2.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   display:flex;
@@ -152,7 +152,7 @@ button:focus-visible {
   height:400px;
   justify-content:flex-end;
   align-items:center;
-  background-position: center 60%;
+  background-position: center 80%;
 }
 
 

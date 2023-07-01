@@ -34,6 +34,7 @@ const SearchApartmentsPage = () =>{
 
     const numberToFilter = params.guests
 
+
     const apartmentsFilteredData = apartmentsData.filter((guestsNumber)=>{
         return guestsNumber.NOG >= numberToFilter
     })
@@ -54,11 +55,11 @@ const SearchApartmentsPage = () =>{
         <div style={{height:"100vh"}}>
             <div style={{display:"flex", flexWrap:"wrap", flexDirection:"column", width:"100%", justifyContent:"center", alignItems:"center"}}>
                 <div className={"searchImage"}>
-                    <Header headerType={"secondaryHeader"}></Header>
+                    <Header headerType={"secondaryHeader"} headerPage={"searchPage"}></Header>
                 </div>
             </div>
             <div>
-                <p style={{textAlign:"center", fontSize:"20px", marginTop:"50px", marginBottom:"50px"}}> From {params.checkin} to {params.checkout} we have {apartmentsFilteredData.length} available <ApartmentWordChecker/> </p>
+                <p style={{textAlign:"center", fontSize:"25px", marginTop:"50px", marginBottom:"50px"}}> From {params.checkin} to {params.checkout} for {params.guests} people we have {apartmentsFilteredData.length} available <ApartmentWordChecker/> </p>
                 <div style={{display:"flex", flexWrap:"wrap", flexDirection:"column", width:"100%", justifyContent:"center", alignItems:"center"}}>
                     {
                         apartmentsFilteredData.map((el) =>{

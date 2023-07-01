@@ -4,7 +4,7 @@ import {useForm} from "react-hook-form";
 import TextField from "@mui/material/TextField";
 import DialogActions from "@mui/material/DialogActions";
 import Button from "@mui/material/Button";
-import SearchIcon from "@mui/icons-material/Search.js";
+import SendIcon from '@mui/icons-material/Send';
 
 
 const Contactpage = () =>{
@@ -110,7 +110,7 @@ const Contactpage = () =>{
                                     helperText={errors.Message?.message}
                                     style={{marginBottom:"20px"}}
                                 />
-                                <Button type={"submit"} onClick={onSubmit} style={{width:"170px", height:"56px", marginTop:"0px", marginLeft: "140px"}} startIcon={<SearchIcon/>} variant="outlined">ASK!</Button>
+                                <Button type={"submit"} onClick={onSubmit} style={{width:"170px", height:"56px", marginTop:"0px", marginLeft: "140px"}} endIcon={<SendIcon/>} variant="outlined">SEND</Button>
                             </div>
                         </form>
                     </div>

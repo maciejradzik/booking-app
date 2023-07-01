@@ -2,62 +2,80 @@
   "apartments": [
     {
       "id": 1,
-      "name": "Apek 1",
-      "NOG": 4,
-      "price": 300,
-      "photo":"public/assets/main2.jpg",
+      "name": "Blue",
+      "NOG": 2,
+      "price": 299,
+      "photo":"images/blue.jpg",
       "size": "29m",
       "beds": "1 double-bed, 1 sofa",
-      "utilities": "WI-FI, AC, TV"
+      "utilities": "WI-FI, AC, TV",
+      "type": "studio"
     },
     {
       "id": 2,
-      "name": "Apek 2",
+      "name": "Yellow",
       "NOG": 2,
-      "price": 100,
-      "photo":"images/main2.jpg"
+      "price": 249,
+      "photo":"images/yellow.jpg",
+      "size": "26m",
+      "beds": "1 double-bed",
+      "utilities": "WI-FI, AC, TV, Balcony",
+      "type": "studio"
     },
     {
       "id": 3,
-      "name": "Apek 3",
-      "NOG": 3,
-      "price": 200,
-      "photo":"images/main2.jpg"
+      "name": "Black",
+      "NOG": 2,
+      "price": 299,
+      "photo":"images/black.jpg",
+      "size": "30m",
+      "beds": "1 double-bed, 1 sofa",
+      "utilities": "WI-FI, AC, TV",
+      "type": "studio"
     },
     {
       "id": 4,
-      "name": "Apek 4",
+      "name": "Green",
       "NOG": 4,
-      "price": 600,
-      "photo":"images/main2.jpg"
+      "price": 499,
+      "photo":"images/green.jpg",
+      "size": "35m",
+      "beds": "1 double-bed, 1 sofa",
+      "utilities": "WI-FI, AC, TV",
+      "type": "onebed"
     },
     {
       "id": 5,
-      "name": "Apek 5",
+      "name": "Grey",
       "NOG": 4,
-      "price": 600,
-      "photo":"images/main2.jpg"
+      "price": 499,
+      "photo":"images/grey.jpg",
+      "size": "33m",
+      "beds": "1 double-bed, 1 sofa",
+      "utilities": "WI-FI, AC, TV",
+      "type": "studio"
     },
     {
       "id": 6,
-      "name": "Apek 6",
-      "NOG": 4,
-      "price": 600,
-      "photo":"images/main2.jpg"
+      "name": "Rose",
+      "NOG": 6,
+      "price": 599,
+      "photo":"images/rose.jpg",
+      "size": "40m",
+      "beds": "1 double-bed, 2 sofas",
+      "utilities": "WI-FI, AC, TV",
+      "type": "onebed"
     },
     {
       "id": 7,
-      "name": "Apek 7",
-      "NOG": 4,
-      "price": 600,
-      "photo":"images/main2.jpg"
-    },
-    {
-      "id": 8,
-      "name": "Apek 8",
-      "NOG": 5,
-      "price": 600,
-      "photo":"images/main2.jpg"
+      "name": "Olive",
+      "NOG": 6,
+      "price": 599,
+      "photo":"images/olive.jpg",
+      "size": "29m",
+      "beds": "1 double-bed, 2 sofas",
+      "utilities": "WI-FI, AC, TV, Balcony",
+      "type": "onebed"
     }
   ]
 }

@@ -12,11 +12,11 @@ import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 
 
-function Header({headerType}) {
+function Header({headerType, headerPage}) {
     const navigate = useNavigate();
     const maxPerson = 10;
     const today = new dayjs()
-
+    
     const [checkinDate, setCheckinDate] = useState(today)
     const [minCheckoutDate, setMinCheckoutDate] = useState(today.add(1, 'day'))
     const [checkoutDate, setCheckoutDate] = useState(today.add(1, 'day'))
@@ -39,7 +39,7 @@ function Header({headerType}) {
         console.log(checkinDate, checkoutDate, guests)
         navigate({
             pathname: '/search',
-            search: `?${createSearchParams({checkin: checkinDate.format("DD/MM/YYYY"), checkout: checkoutDate.format("DD/MM/YYYY"), guests: guests})}`
+            search: `?${createSearchParams({checkin: checkinDate.format("MM/DD/YYYY"), checkout: checkoutDate.format("MM/DD/YYYY"), guests: guests})}`
         });
     }
 
@@ -47,9 +47,9 @@ function Header({headerType}) {
         if (headerType === "mainHeader"){
             return (
                 <>
-                    <p style={{color: "white", fontSize:"40px", marginBottom:"-25px", marginRight:"40px"}}>Welcome to</p>
-                    <p style={{color: "white", fontSize:"70px", marginTop:"10px", marginBottom:"-25px", marginRight:"40px"}}>PJ APARTMENTS</p>
-                    <p style={{color: "white", fontSize:"20px", marginBottom:"30px", marginRight:"40px"}}>Visit the luxury apartments in Kraków</p>
+                    <p style={{color: "white", textShadow: "0px 0px 6px rgba(151, 152, 163, 1)", fontSize:"40px", marginBottom:"-25px", marginRight:"40px"}}>Welcome to</p>
+                    <p style={{color: "white", textShadow: "0px 0px 6px rgba(151, 152, 163, 1)", fontSize:"70px", marginTop:"10px", marginBottom:"-25px", marginRight:"40px"}}>PJ APARTMENTS</p>
+                    <p style={{color: "white", textShadow: "0px 0px 6px rgba(151, 152, 163, 1)", fontSize:"20px", marginBottom:"30px", marginRight:"40px"}}>Visit the luxury apartments in Kraków</p>
                 </>
             )
         }
@@ -58,6 +58,26 @@ function Header({headerType}) {
         }
     }
 
+    console.log(checkinDate)
+    console.log(checkoutDate)
+
+    const SearchHeader = () =>{
+        if (headerPage === "mainPage"){
+            return (
+                <>
+                    <DatePicker sx={{input: {color:"rgba(0, 0, 0, 0.6)"}}} onChange={(checkinValue) => CheckinDateHandler(checkinValue)} className={"datePick"} label="Check in" value={checkinDate} minDate={today} disablePast={true}/>
+                    <DatePicker sx={{input: {color:"rgba(0, 0, 0, 0.6)"}}} onChange={(checkoutValue) => CheckoutDateHandler(checkoutValue)} label="Check out" value={checkoutDate} minDate={minCheckoutDate} disablePast={true}/>
+                </>
+            )
+        } else if (headerPage === "searchPage"){
+            return (
+                <>
+                    <DatePicker sx={{input: {color:"rgba(0, 0, 0, 0.6)"}}} onChange={(checkinValue) => CheckinDateHandler(checkinValue)} className={"datePick"} label="Check in" value={checkinDate} minDate={today} disablePast={true}/>
+                    <DatePicker sx={{input: {color:"rgba(0, 0, 0, 0.6)"}}} onChange={(checkoutValue) => CheckoutDateHandler(checkoutValue)} label="Check out" value={checkoutDate} minDate={minCheckoutDate} disablePast={true}/>
+                </>
+            )
+        }
+    }
 
     return (
         <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -65,8 +85,9 @@ function Header({headerType}) {
                 <OptionalHeader/>
                 <div className={"header"} style={{marginRight:"40px",width:"800px",padding:"20px",borderRadius:"15px",backgroundColor:"rgba(249, 249, 249, 0.9)", display:"flex",flexDirection:"column", alignItems:"center", justifyContent:"flex-start"}}>
                     <div className={"headerTop"} style={{display:"flex", justifyContent:"space-around", width:"100%", alignItems:"center" }}>
-                        <DatePicker sx={{input: {color:"rgba(0, 0, 0, 0.6)"}}} onChange={(checkinValue) => CheckinDateHandler(checkinValue)} className={"datePick"} label="Check in" value={checkinDate} minDate={today} disablePast={true}/>
-                        <DatePicker sx={{input: {color:"rgba(0, 0, 0, 0.6)"}}} onChange={(checkoutValue) => CheckoutDateHandler(checkoutValue)} label="Check out" value={checkoutDate} minDate={minCheckoutDate} disablePast={true}/>
+                        {/* <DatePicker sx={{input: {color:"rgba(0, 0, 0, 0.6)"}}} onChange={(checkinValue) => CheckinDateHandler(checkinValue)} className={"datePick"} label="Check in" value={checkinDate} minDate={today} disablePast={true}/>
+                        <DatePicker sx={{input: {color:"rgba(0, 0, 0, 0.6)"}}} onChange={(checkoutValue) => CheckoutDateHandler(checkoutValue)} label="Check out" value={checkoutDate} minDate={minCheckoutDate} disablePast={true}/> */}
+                        <SearchHeader></SearchHeader>
                         <TextField
                             id="outlined-select-guests"
                             select
